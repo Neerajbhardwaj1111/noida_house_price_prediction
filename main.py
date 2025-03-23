@@ -10,9 +10,10 @@ from sklearn.compose import ColumnTransformer
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.linear_model import LinearRegression
 from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
-
-
+from xgboost import XGBRegressor
 import re
+
+
 df = pd.read_csv("noida_flats1.csv")
 df.drop(columns=["Unnamed: 0"], inplace=True)
 
@@ -63,7 +64,6 @@ print("MSE:", mean_squared_error(y_test, y_pred_lr))
 print("R² Score:", r2_score(y_test, y_pred_lr))
 
 
-from sklearn.ensemble import RandomForestRegressor
 
 # Train Random Forest Model
 rf_model = RandomForestRegressor(n_estimators=100, random_state=42)
@@ -79,7 +79,7 @@ print("MSE:", mean_squared_error(y_test, y_pred_rf))
 print("R² Score:", r2_score(y_test, y_pred_rf))
 
 
-from xgboost import XGBRegressor
+
 
 # Train XGBoost Model
 xgb_model = XGBRegressor(n_estimators=100, learning_rate=0.1)
